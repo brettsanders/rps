@@ -22,8 +22,8 @@ describe "Rock Paper Scissors" do
       end
       it "and computer throws scissors" do
         @rps.play('rock', 'scissors')
-        expect(@rps.winner).to eq :computer
-        expect(@rps.loser).to eq :player
+        expect(@rps.winner).to eq :player
+        expect(@rps.loser).to eq :computer
         expect(@rps.tie).to eq false
       end
     end
@@ -64,8 +64,8 @@ describe "Rock Paper Scissors" do
       end
       it "and computer throws scissors" do
         @rps.play('scissors', 'scissors')
-        expect(@rps.winner).to eq :false
-        expect(@rps.loser).to eq :false
+        expect(@rps.winner).to eq false
+        expect(@rps.loser).to eq false
         expect(@rps.tie).to eq true
       end
     end
