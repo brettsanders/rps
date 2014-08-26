@@ -1,11 +1,13 @@
 class RPS
-  attr_reader :tie
+  attr_accessor :tie
 
   def initialize
-    @tie = true
+    @tie = false
   end
 
   def play(player_move, computer_move)
-    # Do Stuff
+    if player_move == computer_move
+      self.tie = true
+    end
   end
 end
