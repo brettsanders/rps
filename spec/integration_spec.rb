@@ -20,16 +20,23 @@ describe 'RPS Web Interaction' do
 
   # The server should generate a random throw
   it "Should generate random throw" do
-    # TEST
+    post '/throw', params = { :throw => 'rock'}
+    expect(last_response.body).to include('Computer Throws ROCK').
+                               or include('Computer Throws PAPER').
+                               or include('Computer Throws SCISSORS')
   end
 
   # The server should respond with a page indicating whether the user won, lost or tied based on the server's sign
   it "Should say winner, loser, tie" do
-    # TEST
+    post '/throw', params = { :throw => 'rock'}
+    expect(last_response.body).to include('Win').
+                               or include('lose').
+                               or include('tied')
   end
 
   # The response should also include a New Game link so the user can try again
   it "Should have link back to index to replay" do
-    # TEST
+    post '/throw', params = { :throw => 'rock'}
+    expect(last_response.body).to include('a href="/"')
   end
 end

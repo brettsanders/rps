@@ -1,0 +1,23 @@
+<div class="row row-centered">
+  <p>You threw <%= player_move.upcase %></p>
+  <p>And the Computer Throws <%= computer_move.upcase%></p>
+
+  <h3>Game Results:</h3>
+
+  <% if 'computer' == winner %>
+    <p><strong>You lose.</strong></p>
+    Computer's <%= computer_move.upcase %> beat your <%= player_move.upcase %>
+  <% elsif 'player' == winner %>
+    <p><strong>You Win!</strong></p>
+    Your <%= player_move.upcase %> beat Computer's <%= computer_move.upcase %>
+  <% elsif tie %>
+    <p><strong>You tied.</strong></p>
+    You both played <%= player_move.upcase %>
+  <% else %>
+    Something went wrong...
+  <% end %>
+
+  <p>
+    <a href="/" class="btn btn-primary btn" role="button">Try Again</a>
+  </p>
+</div>
