@@ -14,11 +14,14 @@ class RPS
   end
 
   def play(player_move, computer_move)
-    if player_move == computer_move
-      self.tie = true
-      self.winner = false
-      self.loser = false
-    else
+    winner, loser, tie = check_for_winner_loser_tie(player_move, computer_move)
+    save_game_state winner, loser, tie
+  end
+
+  private
+    def check_for_winner_loser_tie player_move, computer_move
+      return [false, false, true] if player_move == computer_move
+
       current_game_moves = [player_move, computer_move]
 
       RULES.each do |rule|
@@ -29,12 +32,14 @@ class RPS
           winner = player_move == winning_move ? :player : :computer
           loser = winner == :player ? :computer : :player
 
-          self.winner = winner
-          self.loser = loser
-          self.tie = false
+          return winner, loser, false
         end
       end
-
     end
-  end
+
+    def save_game_state winner, loser, tie
+      self.winner = winner
+      self.loser = loser
+      self.tie = tie
+    end
 end
